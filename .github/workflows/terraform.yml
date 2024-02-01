@@ -6,8 +6,8 @@ on:
   pull_request:
 
 permissions:
-      contents: read
-      id-token: write
+      contents: 'read'
+      id-token: 'write'
 
 jobs:
         terraform:
@@ -18,21 +18,22 @@ jobs:
             run:
               shell: bash
           permissions:
-                contents: read
-                id-token: write
+                contents: 'read'
+                id-token: 'write'
           steps:
 # Checkout the repository to the GitHub Actions runner
           - name: Checkout
-            uses: actions/checkout@v3
+            uses: actions/checkout@v4
 
           - id: auth
             name: authenticate to google cloud
 
-            uses: google-github-actions/auth@v1
+            uses: google-github-actions/auth@v2
             with:
              token_format: access_token
              workload_identity_provider: projects/80021650195/locations/global/workloadIdentityPools/dev007/providers/dev007
              service_account: githubactions@stunning-base-409811.iam.gserviceaccount.com
+             
 
           - name: Setup Terraform
             uses: hashicorp/setup-terraform@v2
