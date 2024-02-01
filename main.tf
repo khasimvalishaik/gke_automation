@@ -1,8 +1,9 @@
 terraform {
   cloud {
     organization = "tf-khasim-gke-org"
+    token = "ghaot-5APedJDfVZp6E7ip"
     hostname     = "app.terraform.io"
-
+    
     workspaces {
       tags = ["tf_gke_dev"]
     }
